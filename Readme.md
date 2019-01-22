@@ -11,9 +11,9 @@ Reputation-builder is a project that I made that fetches information using Faceb
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+Type the following command in terminal in the root folder and go to hhttp://localhost:3000 in any browser
 ```
 start the server : node index
- server running on  :localhost:3000
 ```
 
 ## Prerequisites
@@ -21,7 +21,7 @@ start the server : node index
 What things you need to install
 
 ```
-Node JS , Javascript 
+Node JS and Node Package Manager
 ```
 ## API used
 
@@ -37,3 +37,4 @@ npm install
 
 fill in the required API keys in configkeys.js
 ```
+
