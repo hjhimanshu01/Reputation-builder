@@ -62,6 +62,7 @@ app.use(flash())
 passport.use(new facebookStrategy(fbOpts,fbCallback))
 passport.use('twitter-authz',new TwitterStrategy(twitterOpts,twitterCallback));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencode
 app.use(session({
     secret : 'dcdsadudhfdj',
     resave : true ,
@@ -73,9 +74,19 @@ app.get('/',(req,res)=>{
 
     res.render('index',{display_acc_to_twitter})
 })
-
+//link to handle email address though form
+app.post('/share/email_notify',(req,res)=>{
+  console.log('email id posted through /share/email_notify and the URL')
+  console.log(req.body)
+  res.send('data logged in console')
+})
 app.get('/share/:name&:data_fb&:data_twitter' ,(req,res)=>{
-  res.send(JSON.stringify(req.params))
+  // res.send(JSON.stringify(req.params))
+  res.render('shared_reputation',{
+    username : req.params.name,
+    data_fb : req.params.data_fb,
+    data_twitter : req.params.data_twitter
+  })
 } )
 app.get('/auth/facebook',passport.authenticate('facebook',{scope : [' user_friends ',' user_likes ']}))
 

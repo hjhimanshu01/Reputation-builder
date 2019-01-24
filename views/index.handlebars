@@ -3,3 +3,99 @@
 
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+<script type="text/javascript" src="chart.js"></script>
+	<h3 style="text-align: center">reputation builder</h3>
+	{{#if user_fb}}
+	<div>
+	 Facebook display name :{{user_fb}}
+	</div>
+	{{/if}}
+	{{#if user_twitter}}
+	<div>
+	 Twitter display name :{{user_twitter}}
+	 </div>
+    <div>
+
+<form method="post" action="/share/email_notify">
+<div class="form-group">
+<label>Get hanged here</label>
+<input placeholder="Get notified of your friend's reputation with your email" class="form-control" name="email" type="email">
+</div>
+<div class="form-group">
+<label>Share your reputation with friends</label>
+<input type="text" value={{URL}} id="url" class="form-control" readonly name="url">
+
+</div>
+
+<button type="submit" class="btn btn-default btn-primary" >Proceed</button>
+
+
+</form>
+
+</div>
+<button class = "btn btn-primary" onclick="copy_url()">Copy URL to share</button>
+
+
+
+    </div>
+
+	<div><canvas id="rating" width="500" height="400"></canvas></div>
+		<div><canvas id="rating1" width="500" height="400"></canvas></div>
+
+	{{/if}}
+      <a button class='btn btn-primary' href = '/auth/twitter' style="display:{{display_acc_to_twitter }}">login twitter</button>
+	
+      <a button class='btn btn-primary' href = '/auth/facebook' style="display:{{display_acc_to_fb}}">login facebook </button>
+    <script>
+        function copy_url() {
+  var copyText = document.getElementById("url");
+
+  copyText.select();
+
+  document.execCommand("copy");
+
+  }
+		 var ctx = document.getElementById('rating').getContext('2d');
+		var ctx1 = document.getElementById('rating1').getContext('2d');
+
+		 data = {
+    datasets: [{
+        data: [{{data_fb}},{{data_twitter}}, parseInt({{data_fb}})+parseInt({{data_twitter}})],
+        
+        backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"],
+        
+            }],
+            
+    labels: [
+        'Facebook',
+        'Twitter',
+        'Total'
+            ],
+			} ,
+            
+        
+            
+ myBarChart = new Chart(ctx1,{
+    type: 'bar',
+    data: data,
+	options: {
+                responsive: false,
+                legend : {
+                    display : false
+                }
+            }
+    });
+
+        
+     myPieChart = new Chart(ctx,{
+        type: 'doughnut',
+        data: data,
+		options: {
+                responsive: false
+            }
+        });
+    
+	</script>
+	
