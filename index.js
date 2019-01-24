@@ -73,6 +73,10 @@ app.get('/',(req,res)=>{
 
     res.render('index',{display_acc_to_twitter})
 })
+
+app.get('/share/:name&:data_fb&:data_twitter' ,(req,res)=>{
+  res.send(JSON.stringify(req.params))
+} )
 app.get('/auth/facebook',passport.authenticate('facebook',{scope : [' user_friends ',' user_likes ']}))
 
 app.get('/auth/facebook/callback',passport.authenticate('facebook',{scope : ['user_friends' ,' user_likes ']}),(req,res)=>{
@@ -97,11 +101,13 @@ app.get('/auth/twitter/callback',
 
     var display_acc_to_fb = "none"
     var display_acc_to_twitter = "none"
+    var URL = 'http://localhost:3000/share/'+req.account.username+'&'+data_fb+'&'+data_twitter
     res.render('index',{user_fb : req.session.passport.user.displayName ,
       user_twitter : req.account.username,
       display_acc_to_fb,display_acc_to_twitter,
       data_fb : data_fb.friends.summary.total_count,
-      data_twitter : data_twitter.followers_count
+      data_twitter : data_twitter.followers_count,
+      URL:'http://localhost:3000/share/'+req.account.username+'&'+data_fb.friends.summary.total_count+'&'+data_twitter.followers_count
     })
   }
 );

@@ -2,7 +2,7 @@ data = {
     datasets: [{
         data: [10, 20, 30],
         
-        backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"],
+        backgroundColor: ["#0074D9", "#FF4136", "#2ECC40"],
         innerRadius: 9  ,
         animationEnabled: true,
         
@@ -17,7 +17,6 @@ data = {
         
             
  myPieChart = new Chart(ctx,{
-    height : 50 ,
     type: 'doughnut',
     data: data,
     });
@@ -26,7 +25,7 @@ data = {
     data = {
         datasets: [{
             data: [10, 20, 30],
-            backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"]
+            backgroundColor: ["#0074D9", "#FF4136", "#2ECC40"]
                 }],
                 
         labels: [

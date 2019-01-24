@@ -20,7 +20,7 @@
 	<div>
 	 Twitter display name :{{user_twitter}}
 	 </div>
-	
+	{{!-- {{URL}} --}}
 	<div><canvas id="rating" width="500" height="400"></canvas></div>
 		<div><canvas id="rating1" width="500" height="400"></canvas></div>
 
@@ -45,23 +45,24 @@
         'Twitter',
         'Total'
             ],
-			options: {
-                responsive: false
-            }} ,
+			} ,
             
         
             
- myPieChart = new Chart(ctx1,{
-    type: 'doughnut',
+ myBarChart = new Chart(ctx1,{
+    type: 'bar',
     data: data,
 	options: {
-                responsive: false
+                responsive: false,
+                legend : {
+                    display : false
+                }
             }
     });
 
         
      myPieChart = new Chart(ctx,{
-        type: 'bar',
+        type: 'doughnut',
         data: data,
 		options: {
                 responsive: false
