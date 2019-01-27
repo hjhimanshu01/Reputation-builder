@@ -4,7 +4,7 @@ Reputation-builder
 
 ## About the Project
 ```
-Reputation-builder is a project that I made that fetches information using Facebook and Twitter API and draws pie chart and bar chart depending on the number of followers.
+Reputation-builder is a project that I made that fetches information using Facebook and Twitter API and draws pie chart and bar chart depending on the number of followers with functions to share it with your friends or companions.
 ```
 
 ## Getting Started
